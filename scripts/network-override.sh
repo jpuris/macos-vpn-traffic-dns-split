@@ -2,8 +2,8 @@
 
 # SETTINGS
 dns="127.0.0.1"
-gateway="A.A.A.A"
-vpn_networks="B.B.B.B/24 C.C.C.C/24 D.D.D.D/16"
+gateway="A.A.A.A" # TODO: detect automatically
+vpn_networks="B.B.B.0/24 C.C.C.0/24 D.D.0.0/16"
 
 if [[ $EUID -ne 0 ]]; then
     echo "Run this as root"
