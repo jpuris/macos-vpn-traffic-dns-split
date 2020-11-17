@@ -27,7 +27,13 @@ cp scripts/network-override.sh $HOME/.util/scripts/
 
 ```sh
 cp agent/network-override.plist /Library/LaunchDaemons/
-sudo launchctl load -w /Library/LaunchDaemons/network.watcher.plist
+```
+
+## Start the services
+
+```sh
+sudo brew services restart dnsmasq
+sudo launchctl load -w /Library/LaunchDaemons/network-override.plist
 ```
 
 ## Useful commands
