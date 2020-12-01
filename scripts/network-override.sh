@@ -11,7 +11,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # If your utun interface tend to change like mine you can do the following given the right interface is the last one in the list
-INTERFACE=$(ifconfig | grep utun | cut -d : -f 1 | grep utun | tail -n 1)
+INTERFACE=$(ifconfig | grep -A1 utun | grep -B1 'inet ' | grep utun | cut -d : -f 1 | grep utun | tail -n 1)
 
 # last line in the file is the gateway ip
 route change default ${gateway}
