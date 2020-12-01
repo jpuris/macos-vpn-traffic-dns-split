@@ -4,8 +4,8 @@
 dns="127.0.0.1"
 DNS_RESOLVE="127.0.0.1"
 DNS="1.1.1.1 1.0.0.1"
-gateway="A.A.A.A" # TODO: detect automatically
-vpn_networks="B.B.B.0/24 C.C.C.0/24 D.D.0.0/16"
+GATEWAY="A.A.A.A" # CHANGE THIS! TODO: detect automatically
+VPN_NETWORKS="B.B.B.0/24 C.C.C.0/24 D.D.0.0/16" # CHANGE THIS! 
 
 if [[ $EUID -ne 0 ]]; then
     echo "Run this as root"
@@ -17,8 +17,8 @@ fi
 INTERFACE=$(ifconfig | grep -A1 utun | grep -B1 'inet ' | grep utun | cut -d : -f 1 | grep utun | tail -n 1)
 
 # last line in the file is the gateway ip
-route change default ${gateway}
-for NET in ${NETWORKS}; do route add -net ${NET} -interface $INTERFACE; done;
+route change default ${GATEWAY}
+for NET in ${VPN_NETWORKS}; do route add -net ${NET} -interface $INTERFACE; done;
 
 # DNS
 # Update DNS in resolv.conf
