@@ -28,5 +28,4 @@ while read state; do printf "d.init\nget ${state}\nd.add ServerAddresses * ${dns
 
 # Flush
 sudo killall -HUP mDNSResponder
-sudo killall mDNSResponderHelper
 sudo dscacheutil -flushcache
